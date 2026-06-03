@@ -97,15 +97,158 @@
     .empty-slot{height:100%;border:1px dashed #c9b6ff;border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;color:#7c6b9c;font-weight:800;font-size:.82rem;background:#fff;}
     .appointment-card{color:#fff;border-radius:14px;padding:8px 10px;font-size:.78rem;line-height:1.2;box-shadow:0 10px 22px rgba(124,58,237,.22);border-left:4px solid rgba(255,255,255,.35);cursor:pointer;min-height:72px;background:linear-gradient(135deg,var(--accent-2),var(--accent));height:100%;overflow:hidden;}
     .appointment-card small{display:block;opacity:.96;}
+    .appointment-card.completed-card{background:linear-gradient(135deg,#15803d,#22c55e);box-shadow:0 10px 22px rgba(21,128,61,.22);}
+    .appointment-card.no-answer-card{background:linear-gradient(135deg,#b91c1c,#ef4444);box-shadow:0 10px 22px rgba(185,28,28,.22);}
+    .appointment-card.process-card{background:linear-gradient(135deg,#2563eb,#60a5fa);box-shadow:0 10px 22px rgba(37,99,235,.22);}
+    .appointment-card .outcome-label{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.18);border-radius:999px;padding:3px 8px;font-size:.68rem;font-weight:900;margin-top:4px;}
+    .copy-line{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid #ede2ff;background:#faf7ff;border-radius:12px;padding:9px 11px;margin-bottom:8px;}
+    .copy-line span{word-break:break-word;}
+    .copy-line button{white-space:nowrap;}
     .filters-grid{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:12px;}
     .btn-primary-custom{background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;border:none;box-shadow:0 8px 18px rgba(124,58,237,.22);}
     .btn-primary-custom:hover{filter:brightness(.95);color:#fff;}
     .form-control:focus,.form-select:focus{border-color:var(--accent-2);box-shadow:0 0 0 .2rem rgba(124,58,237,.16);}
-    @media(max-width:1000px){.sidebar{width:250px;}.filters-grid{grid-template-columns:1fr 1fr;}}
+
+
+    .hidden{display:none!important;}
+
+    .landing-screen{
+      position:fixed;
+      inset:0;
+      z-index:999999;
+      background:
+        radial-gradient(circle at top left, rgba(219,39,119,.22), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(124,58,237,.22), transparent 36%),
+        linear-gradient(135deg,#f7f3ff 0%,#fff1f7 48%,#eef2ff 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px;
+    }
+
+    .landing-card{
+      width:min(920px,100%);
+      background:rgba(255,255,255,.88);
+      border:1px solid var(--border);
+      border-radius:30px;
+      box-shadow:0 24px 70px rgba(46,16,101,.16);
+      padding:54px 38px;
+      text-align:center;
+      backdrop-filter:blur(10px);
+    }
+
+    .landing-eyebrow{
+      letter-spacing:.28rem;
+      text-transform:uppercase;
+      font-weight:800;
+      color:var(--accent);
+      margin-bottom:14px;
+      font-size:.83rem;
+    }
+
+    .landing-title{
+      font-size:clamp(2rem,5vw,4rem);
+      font-weight:900;
+      color:var(--primary);
+      margin-bottom:8px;
+    }
+
+    .landing-subtitle{
+      color:var(--muted);
+      font-weight:700;
+      margin-bottom:34px;
+    }
+
+    .landing-actions{
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .landing-btn{
+      min-width:250px;
+      padding:18px 28px;
+      border:none;
+      border-radius:999px;
+      font-weight:900;
+      font-size:1rem;
+      letter-spacing:.03em;
+      transition:.2s ease;
+      box-shadow:0 12px 28px rgba(46,16,101,.13);
+      cursor:pointer;
+    }
+
+    .landing-btn:hover{transform:translateY(-2px);filter:brightness(.98);}
+    .btn-cs{background:linear-gradient(135deg,var(--primary),var(--accent-2));color:#fff;}
+    .btn-collab{background:linear-gradient(135deg,var(--accent),#f97316);color:#fff;}
+
+    .collab-shell{
+      height:100vh;
+      overflow:auto;
+      background:linear-gradient(135deg,#f7f3ff 0%,#fff1f7 45%,#eef2ff 100%);
+      padding:22px;
+    }
+
+    .collab-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .collab-title{color:var(--primary);font-weight:900;margin:0;}
+    .collab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+
+    .client-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:16px;
+      box-shadow:0 12px 30px rgba(46,16,101,.08);
+      cursor:pointer;
+      transition:.18s ease;
+      min-height:190px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .client-card:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(46,16,101,.13);}
+    .client-card .client-id{font-weight:900;color:var(--primary);font-size:1.05rem;}
+    .client-card .client-name{font-weight:800;color:var(--text);margin-top:4px;}
+    .client-meta{font-size:.84rem;color:var(--muted);margin-top:10px;line-height:1.45;}
+    .outcome-pill{display:inline-flex;align-items:center;gap:6px;width:max-content;border-radius:999px;padding:5px 10px;font-weight:900;font-size:.74rem;text-transform:uppercase;}
+    .outcome-pending{background:#fef3c7;color:#92400e;}
+    .outcome-done{background:#dcfce7;color:#166534;}
+    .outcome-no-contesta{background:#fee2e2;color:#991b1b;}
+    .outcome-proceso{background:#e0e7ff;color:#3730a3;}
+    .empty-state{background:#fff;border:1px dashed var(--border);border-radius:22px;padding:34px;text-align:center;color:var(--muted);font-weight:800;}
+
+    @media(max-width:1000px){.sidebar{width:250px;}.filters-grid{grid-template-columns:1fr 1fr;}.collab-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 
 <body>
+
+  <div id="landingScreen" class="landing-screen">
+    <div class="landing-card">
+      <div class="landing-eyebrow">Mendoza Law Firm</div>
+      <div class="landing-title">Agendas PCR-CS</div>
+      <div class="landing-subtitle">Selecciona el módulo que deseas utilizar.</div>
+      <div class="landing-actions">
+        <button class="landing-btn btn-cs" onclick="enterMode('CUSTOMER_SERVICE')">
+          <i class="bi bi-headset me-2"></i>CUSTOMER SERVICE
+        </button>
+        <button class="landing-btn btn-collab" onclick="enterMode('COLABORADORES')">
+          <i class="bi bi-people-fill me-2"></i>COLABORADORES
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="loading-overlay" id="loadingOverlay">
     <div class="text-center">
       <div class="spinner-border" style="color:#7c3aed" role="status"></div>
@@ -113,7 +256,7 @@
     </div>
   </div>
 
-  <div class="app-container">
+  <div class="app-container hidden" id="customerServiceApp">
     <aside class="sidebar">
       <div class="brand-title">
         <i class="bi bi-calendar2-check-fill fs-4"></i>
@@ -153,6 +296,7 @@
           <button class="btn btn-outline-secondary btn-sm" onclick="navigateCalendar(1)"><i class="bi bi-chevron-right"></i></button>
           <button class="btn btn-light btn-sm border fw-bold" onclick="goToToday()">HOY</button>
         </div>
+        <button class="btn btn-outline-dark btn-sm fw-bold" onclick="goBackToLanding()"><i class="bi bi-box-arrow-left me-1"></i>Menú</button>
       </div>
 
       <div class="calendar-legend">
@@ -203,6 +347,53 @@
         </div>
       </section>
     </main>
+  </div>
+
+
+
+  <div class="collab-shell hidden" id="collaboratorsApp">
+    <div class="collab-header">
+      <div>
+        <h1 class="collab-title">Colaboradores · Seguimiento de clientes</h1>
+        <div class="text-muted fw-semibold">Consulta clientes asignados, revisa la información y registra el outcome en la misma fila de la Sheet.</div>
+      </div>
+      <button class="btn btn-outline-dark fw-bold" onclick="goBackToLanding()">
+        <i class="bi bi-box-arrow-left me-1"></i>Menú principal
+      </button>
+    </div>
+
+    <div class="card-soft p-3 mb-3">
+      <div class="row g-3 align-items-end">
+        <div class="col-md-3">
+          <label class="form-label small fw-bold">Desde</label>
+          <input type="date" id="collabDateFrom" class="form-control">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label small fw-bold">Hasta</label>
+          <input type="date" id="collabDateTo" class="form-control">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label small fw-bold">Outcome</label>
+          <select id="collabOutcomeFilter" class="form-select" onchange="renderCollaboratorCards()">
+            <option value="ALL">TODOS</option>
+            <option value="PENDING">SIN OUTCOME</option>
+            <option value="Done">Done</option>
+            <option value="No contesta">No contesta</option>
+            <option value="en Proceso">en Proceso</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label small fw-bold">Buscar</label>
+          <input type="text" id="collabSearchInput" class="form-control" placeholder="ID, nombre, agente..." oninput="renderCollaboratorCards()">
+        </div>
+        <div class="col-12 d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <span class="badge text-bg-primary" id="collabCount">0 clientes</span>
+          <button class="btn btn-primary-custom fw-bold" onclick="loadCollaboratorClients(true)"><i class="bi bi-arrow-clockwise me-1"></i>Actualizar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="collabCards" class="collab-grid"></div>
   </div>
 
   <div class="modal fade" id="appointmentModal" tabindex="-1">
@@ -278,22 +469,27 @@
     const CUSTOMER_SERVICE_TEAM = ["Lizbeth Perea","Naomi Rodriguez"];
 
     const WEEKDAY_SLOTS = [
-      { label:"8:00–9:30", start:"08:00", end:"09:30" },
-      { label:"9:31–11:00", start:"09:31", end:"11:00" },
-      { label:"11:01–12:30", start:"11:01", end:"12:30" },
-      { label:"12:31–2:00", start:"12:31", end:"14:00" }
+      { label:"9:00–10:30", start:"09:00", end:"10:30" },
+      { label:"10:31–12:00", start:"10:31", end:"12:00" },
+      { label:"12:01–1:30", start:"12:01", end:"13:30" },
+      { label:"1:31–3:00", start:"13:31", end:"15:00" }
     ];
 
     const SATURDAY_SLOTS = [
-      { label:"8:00–9:30", start:"08:00", end:"09:30" },
-      { label:"9:31–11:00", start:"09:31", end:"11:00" }
+      { label:"9:00–10:30", start:"09:00", end:"10:30" },
+      { label:"10:31–12:00", start:"10:31", end:"12:00" },
+      { label:"12:01–1:30", start:"12:01", end:"13:30" },
+      { label:"1:31–3:00", start:"13:31", end:"15:00" }
     ];
 
+    let currentMode = "";
     let currentSelectedDate = new Date();
     let currentViewingMonth = new Date().getMonth();
     let currentViewingYear = new Date().getFullYear();
     let calendarAppointments = [];
     let reportAgendaData = [];
+    let collaboratorClients = [];
+    let filteredCollaboratorClients = [];
     let appointmentModal;
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -302,10 +498,54 @@
 
       populatePersonSelectors();
       setDefaultReportDates();
+      setDefaultCollaboratorDates();
       renderAll();
       refreshCalendarAppointmentsOnly(true);
       loadAgenda(false);
     });
+
+
+
+    function enterMode(mode){
+      currentMode = mode;
+      document.getElementById("landingScreen").classList.add("hidden");
+
+      // Ambos módulos usan la misma estructura visual de agenda.
+      // CUSTOMER SERVICE puede agendar/eliminar.
+      // COLABORADORES solo consulta llamadas y registra outcome/notas.
+      document.getElementById("customerServiceApp").classList.remove("hidden");
+      const collaboratorsApp = document.getElementById("collaboratorsApp");
+      if(collaboratorsApp) collaboratorsApp.classList.add("hidden");
+
+      updateModeLabels();
+      renderAll();
+      refreshCalendarAppointmentsOnly(true);
+      loadAgenda(false);
+    }
+
+    function goBackToLanding(){
+      currentMode = "";
+      document.getElementById("landingScreen").classList.remove("hidden");
+      document.getElementById("customerServiceApp").classList.add("hidden");
+      const collaboratorsApp = document.getElementById("collaboratorsApp");
+      if(collaboratorsApp) collaboratorsApp.classList.add("hidden");
+    }
+
+    function updateModeLabels(){
+      const subtitle = document.querySelector(".brand-title small");
+      const navCalendar = document.getElementById("navCalendar");
+      const navReports = document.getElementById("navReports");
+
+      if(currentMode === "COLABORADORES"){
+        if(subtitle) subtitle.textContent = "Seguimiento colaboradores";
+        if(navCalendar) navCalendar.innerHTML = '<i class="bi bi-telephone-outbound"></i> Llamadas asignadas';
+        if(navReports) navReports.innerHTML = '<i class="bi bi-table"></i> Visualizar llamadas';
+      }else{
+        if(subtitle) subtitle.textContent = "Agenda interna";
+        if(navCalendar) navCalendar.innerHTML = '<i class="bi bi-calendar3"></i> Calendario';
+        if(navReports) navReports.innerHTML = '<i class="bi bi-table"></i> Visualizar agenda';
+      }
+    }
 
     function showLoading(show){
       document.getElementById("loadingOverlay").style.display = show ? "flex" : "none";
@@ -315,6 +555,22 @@
       const today = toYMD(new Date());
       document.getElementById("agendaDateFrom").value = today;
       document.getElementById("agendaDateTo").value = today;
+    }
+
+
+
+    function setDefaultCollaboratorDates(){
+      const today = new Date();
+      const monday = new Date(today);
+      const day = monday.getDay();
+      const diffToMonday = day === 0 ? -6 : 1 - day;
+      monday.setDate(today.getDate() + diffToMonday);
+
+      const saturday = new Date(monday);
+      saturday.setDate(monday.getDate() + 5);
+
+      document.getElementById("collabDateFrom").value = toYMD(monday);
+      document.getElementById("collabDateTo").value = toYMD(saturday);
     }
 
     function populatePersonSelectors(){
@@ -479,7 +735,14 @@
             cell.dataset.person = person;
             cell.dataset.start = slot.start;
             cell.dataset.end = slot.end;
-            cell.onclick = () => openBooking(person,slot);
+
+            if(currentMode === "CUSTOMER_SERVICE"){
+              cell.onclick = () => openBooking(person,slot);
+            }else{
+              cell.onclick = null;
+              cell.style.cursor = "default";
+            }
+
             col.appendChild(cell);
           });
         }
@@ -493,7 +756,11 @@
     function renderAppointmentsInGrid(){
       document.querySelectorAll(".slot-cell").forEach(cell => {
         if(!cell.classList.contains("disabled-slot")){
-          cell.innerHTML = '<div class="empty-slot">Disponible<br><small>Click para agendar</small></div>';
+          if(currentMode === "CUSTOMER_SERVICE"){
+            cell.innerHTML = '<div class="empty-slot">Disponible<br><small>Click para agendar</small></div>';
+          }else{
+            cell.innerHTML = '<div class="empty-slot">Sin llamada asignada</div>';
+          }
         }
       });
 
@@ -520,17 +787,37 @@
         cell.innerHTML = "";
 
         const tag = document.createElement("div");
-        tag.className = "appointment-card";
+        const outcomeValue = String(app.outcome || "").trim().toLowerCase();
+        let outcomeClass = "";
+        let outcomeLabel = "";
+
+        if(outcomeValue === "done"){
+          outcomeClass = "completed-card";
+          outcomeLabel = '<span class="outcome-label"><i class="bi bi-check-circle-fill"></i> Done</span>';
+        }else if(outcomeValue === "no contesta"){
+          outcomeClass = "no-answer-card";
+          outcomeLabel = '<span class="outcome-label"><i class="bi bi-telephone-x-fill"></i> No contesta</span>';
+        }else if(outcomeValue === "en proceso"){
+          outcomeClass = "process-card";
+          outcomeLabel = '<span class="outcome-label"><i class="bi bi-hourglass-split"></i> en Proceso</span>';
+        }
+
+        tag.className = `appointment-card ${outcomeClass}`.trim();
         tag.innerHTML = `
           <strong>${escapeHtml(app.id || "Sin ID")}</strong>
           <small>${escapeHtml(app.clientName || "")}</small>
           <small>${escapeHtml(app.callTimeLabel || formatTime12(slot.start))}</small>
           <small>${escapeHtml(app.visaType || "")}</small>
+          ${outcomeLabel}
         `;
 
         tag.onclick = e => {
           e.stopPropagation();
-          showAppointmentInfo(app);
+          if(currentMode === "COLABORADORES"){
+            showCollaboratorAppointmentInfo(app);
+          }else{
+            showAppointmentInfo(app);
+          }
         };
 
         cell.appendChild(tag);
@@ -554,6 +841,11 @@
     }
 
     function openBooking(person,slot){
+      if(currentMode !== "CUSTOMER_SERVICE"){
+        Swal.fire("Solo lectura","En COLABORADORES no se pueden agendar llamadas. Solo se puede abrir la llamada asignada y registrar outcome/notas.","info");
+        return;
+      }
+
       clearModalFields();
 
       document.getElementById("appointmentModalTitle").textContent = `Agendar · ${person} · ${slot.label}`;
@@ -684,6 +976,60 @@
       });
     }
 
+    function showCollaboratorAppointmentInfo(app){
+      const client = normalizeAppointmentForUI(app || {});
+      const notesCsHtml = escapeHtml(client.notes || "Sin notas.").replace(/\n/g,"<br>");
+      const phoneValue = client.phone || "";
+
+      Swal.fire({
+        title:escapeHtml(client.clientName || client.id || "Cliente"),
+        width:820,
+        html:`
+          <div class="text-start">
+            <div class="mb-3"><span class="outcome-pill ${getOutcomeClass(client.outcome)}">${escapeHtml(client.outcome || "Sin outcome")}</span></div>
+
+            <div class="copy-line">
+              <span><strong>ID:</strong> ${escapeHtml(client.id || "")}</span>
+              <button class="btn btn-sm btn-outline-dark fw-bold" type="button" onclick="copyToClipboard('${escapeAttr(client.id || "")}')">
+                <i class="bi bi-copy me-1"></i>Copiar
+              </button>
+            </div>
+
+            <div class="copy-line">
+              <span><strong>NOMBRE DEL CLIENTE:</strong> ${escapeHtml(client.clientName || "")}</span>
+              <button class="btn btn-sm btn-outline-dark fw-bold" type="button" onclick="copyToClipboard('${escapeAttr(client.clientName || "")}')">
+                <i class="bi bi-copy me-1"></i>Copiar
+              </button>
+            </div>
+
+            <div class="copy-line">
+              <span><strong>TELÉFONO:</strong> ${escapeHtml(phoneValue || "Sin teléfono")}</span>
+              <button class="btn btn-sm btn-outline-dark fw-bold" type="button" onclick="copyToClipboard('${escapeAttr(phoneValue || "")}')" ${phoneValue ? "" : "disabled"}>
+                <i class="bi bi-copy me-1"></i>Copiar
+              </button>
+            </div>
+
+            <p class="mt-3"><strong>FECHA APERTURA:</strong> ${escapeHtml(formatDisplayDate(client.openingDate))}</p>
+            <p><strong>TIPO DE VISA:</strong> ${escapeHtml(client.visaType)}</p>
+            <p><strong>AGENTE PCR:</strong> ${escapeHtml(client.personAssigned)}</p>
+            <p><strong>FECHA LLAMADA:</strong> ${escapeHtml(formatDisplayDate(client.callDate))}</p>
+            <p><strong>HORARIO:</strong> ${escapeHtml(client.callTimeLabel)}</p>
+            <p><strong>LINK:</strong> ${client.meetingLink ? `<a href="${escapeAttr(client.meetingLink)}" target="_blank" rel="noopener">Abrir videollamada</a>` : ""}</p>
+            <hr>
+            <p><strong>NOTAS CS:</strong><br>${notesCsHtml}</p>
+          </div>
+        `,
+        showDenyButton:true,
+        showConfirmButton:true,
+        confirmButtonText:"Cerrar",
+        denyButtonText:"Finalizar"
+      }).then(async result => {
+        if(result.isDenied){
+          await finalizeCollaboratorClient(client);
+        }
+      });
+    }
+
     async function deleteAppointment(id,date,time,person){
       try{
         showLoading(true);
@@ -721,7 +1067,8 @@
           action:"getAgenda",
           from:day,
           to:day,
-          person:"ALL"
+          person:"ALL",
+          mode:currentMode || "CUSTOMER_SERVICE"
         });
 
         const data = Array.isArray(res.data) ? res.data : [];
@@ -751,7 +1098,8 @@
           action:"getAgenda",
           from,
           to,
-          person
+          person,
+          mode:currentMode || "CUSTOMER_SERVICE"
         });
 
         const data = Array.isArray(res.data) ? res.data : [];
@@ -797,6 +1145,202 @@
           </tr>
         `;
       }).join("");
+    }
+
+
+
+    async function loadCollaboratorClients(showOverlay=true){
+      const from = document.getElementById("collabDateFrom").value;
+      const to = document.getElementById("collabDateTo").value;
+
+      try{
+        if(showOverlay) showLoading(true);
+
+        // Se usa getAgenda para mantener una sola fuente de datos/sheet.
+        // El backend puede devolver también rowId/rowNumber, outcome y followupNotes.
+        const res = await apiGet({
+          action:"getAgenda",
+          from,
+          to,
+          person:"ALL",
+          mode:"COLABORADORES"
+        });
+
+        const data = Array.isArray(res.data) ? res.data : [];
+
+        collaboratorClients = data.map(normalizeCollaboratorClient);
+        renderCollaboratorCards();
+
+      }catch(err){
+        console.error(err);
+        Swal.fire("Error","No se pudieron cargar los clientes de colaboradores. Detalle: " + (err.message || err),"error");
+      }finally{
+        if(showOverlay) showLoading(false);
+      }
+    }
+
+    function normalizeCollaboratorClient(raw){
+      const base = normalizeAppointmentForUI(raw || {});
+      const outcome = raw.outcome || raw.Outcome || raw.OUTCOME || raw.statusColaborador || raw["Outcome"] || "";
+      const followupNotes = raw.followupNotes || raw.notasSeguimiento || raw["Notas de seguimiento"] || raw["Follow Up Notes"] || raw.notesColaborador || "";
+
+      return {
+        ...base,
+        rowId:raw.rowId || raw.rowNumber || raw.row || raw.fila || "",
+        outcome,
+        followupNotes
+      };
+    }
+
+    function renderCollaboratorCards(){
+      const container = document.getElementById("collabCards");
+      const outcomeFilter = document.getElementById("collabOutcomeFilter").value;
+      const query = String(document.getElementById("collabSearchInput").value || "").toLowerCase().trim();
+
+      let data = collaboratorClients.slice();
+
+      if(outcomeFilter !== "ALL"){
+        data = data.filter(c => {
+          const out = String(c.outcome || "").trim();
+          if(outcomeFilter === "PENDING") return !out;
+          return out.toLowerCase() === outcomeFilter.toLowerCase();
+        });
+      }
+
+      if(query){
+        data = data.filter(c => [c.id,c.clientName,c.visaType,c.personAssigned,c.callDate,c.callTimeLabel,c.outcome]
+          .join(" ").toLowerCase().includes(query));
+      }
+
+      document.getElementById("collabCount").textContent = `${data.length} clientes`;
+
+      filteredCollaboratorClients = data;
+
+      if(!data.length){
+        container.innerHTML = '<div class="empty-state">No hay clientes para mostrar con esos filtros.</div>';
+        return;
+      }
+
+      container.innerHTML = filteredCollaboratorClients.map((client,index) => {
+        const outcomeText = client.outcome || "Sin outcome";
+        const outcomeClass = getOutcomeClass(outcomeText);
+
+        return `
+          <div class="client-card" onclick="showCollaboratorClientInfo(${index})">
+            <div>
+              <span class="outcome-pill ${outcomeClass}"><i class="bi bi-flag-fill"></i>${escapeHtml(outcomeText)}</span>
+              <div class="client-id mt-3">${escapeHtml(client.id || "Sin ID")}</div>
+              <div class="client-name">${escapeHtml(client.clientName || "Sin nombre")}</div>
+              <div class="client-meta">
+                <div><strong>Tipo de Visa:</strong> ${escapeHtml(client.visaType || "")}</div>
+                <div><strong>Agente PCR:</strong> ${escapeHtml(client.personAssigned || "")}</div>
+                <div><strong>Fecha llamada:</strong> ${escapeHtml(formatDisplayDate(client.callDate || ""))}</div>
+                <div><strong>Horario:</strong> ${escapeHtml(client.callTimeLabel || "")}</div>
+              </div>
+            </div>
+            <div class="mt-3 text-end small fw-bold" style="color:var(--accent-2)">Ver detalle <i class="bi bi-arrow-right-circle"></i></div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function getOutcomeClass(outcome){
+      const value = String(outcome || "").toLowerCase().trim();
+      if(value === "done") return "outcome-done";
+      if(value === "no contesta") return "outcome-no-contesta";
+      if(value === "en proceso") return "outcome-proceso";
+      return "outcome-pending";
+    }
+
+    function showCollaboratorClientInfo(index){
+      const client = filteredCollaboratorClients[index];
+      if(!client) return;
+      showCollaboratorAppointmentInfo(client);
+    }
+
+    async function finalizeCollaboratorClient(client){
+      const result = await Swal.fire({
+        title:"Finalizar seguimiento",
+        width:650,
+        html:`
+          <div class="text-start">
+            <label class="form-label small fw-bold">Outcome</label>
+            <select id="finalOutcomeInput" class="form-select mb-3">
+              <option value="Done">Done</option>
+              <option value="No contesta">No contesta</option>
+              <option value="en Proceso">en Proceso</option>
+            </select>
+            <label class="form-label small fw-bold">Notas de seguimiento</label>
+            <textarea id="followupNotesInput" class="form-control" rows="5" placeholder="Notas de seguimiento..."></textarea>
+          </div>
+        `,
+        showCancelButton:true,
+        confirmButtonText:"Guardar",
+        cancelButtonText:"Regresar",
+        didOpen:() => {
+          if(client.outcome){ document.getElementById("finalOutcomeInput").value = client.outcome; }
+          if(client.followupNotes){ document.getElementById("followupNotesInput").value = client.followupNotes; }
+        },
+        preConfirm:() => {
+          const outcome = document.getElementById("finalOutcomeInput").value;
+          const followupNotes = document.getElementById("followupNotesInput").value.trim();
+          if(!outcome){
+            Swal.showValidationMessage("Selecciona un outcome.");
+            return false;
+          }
+          return {outcome, followupNotes};
+        }
+      });
+
+      if(!result.isConfirmed) return;
+
+      const payload = {
+        action:"finishCollaboratorClient",
+        rowId:client.rowId || "",
+        id:client.id || "",
+        clientName:client.clientName || "",
+        callDate:client.callDate || "",
+        callTimeLabel:client.callTimeLabel || "",
+        personAssigned:client.personAssigned || "",
+        outcome:result.value.outcome,
+        followupNotes:result.value.followupNotes
+      };
+
+      try{
+        showLoading(true);
+        const res = await apiPost(payload);
+
+        if(res && res.success){
+          const updatedOutcome = result.value.outcome;
+          const updatedNotes = result.value.followupNotes;
+
+          calendarAppointments = calendarAppointments.map(item => {
+            const normalized = normalizeAppointmentForUI(item);
+            const sameRow = client.rowId && String(normalized.rowId || "") === String(client.rowId);
+            const sameClient = String(normalized.id || "").trim() === String(client.id || "").trim() &&
+              normalizeDateToYMD(normalized.callDate) === normalizeDateToYMD(client.callDate) &&
+              String(normalized.callTimeLabel || "").trim().toLowerCase() === String(client.callTimeLabel || "").trim().toLowerCase() &&
+              String(normalized.personAssigned || "").trim() === String(client.personAssigned || "").trim();
+
+            if(sameRow || sameClient){
+              return {...item, outcome:updatedOutcome, followupNotes:updatedNotes};
+            }
+            return item;
+          });
+
+          renderAll();
+          await refreshCalendarAppointmentsOnly(false);
+          Swal.fire("Guardado con éxito","","success");
+        }else{
+          console.error("Respuesta del backend:",res);
+          Swal.fire("Error",(res && res.message) || "No se pudo guardar el seguimiento.","error");
+        }
+      }catch(err){
+        console.error(err);
+        Swal.fire("Error","No se pudo guardar el seguimiento. Detalle: " + (err.message || err),"error");
+      }finally{
+        showLoading(false);
+      }
     }
 
     async function exportAgendaToSheet(){
@@ -900,16 +1444,20 @@
 
       return {
         ...a,
+        rowId:a.rowId || a.rowNumber || a.row || a.fila || "",
         openingDate:normalizeDateToYMD(a.openingDate || a.fechaApertura || ""),
         id:a.id || "",
         clientName:a.clientName || a.nombreCliente || "",
+        phone:a.phone || a.telefono || a.tel || a.Telefono || a["TELÉFONO"] || a["TELEFONO"] || "",
         visaType:a.visaType || a.tipoVisa || "",
         personAssigned,
         callDate,
         callTimeLabel:a.callTimeLabel || a.horarioLlamada || (startTime ? formatTime12(startTime) : ""),
         startTime,
         meetingLink:a.meetingLink || a.linkVideollamada || "",
-        notes:a.notes || a.notas || ""
+        notes:a.notes || a.notas || "",
+        outcome:a.outcome || a.Outcome || a.OUTCOME || a.statusColaborador || a["Outcome"] || "",
+        followupNotes:a.followupNotes || a.notasSeguimiento || a["Notas de seguimiento"] || a["Follow Up Notes"] || a.notesColaborador || ""
       };
     }
 
@@ -1017,6 +1565,31 @@
       const [y,m,d] = ymd.split("-");
 
       return `${m}/${d}/${y}`;
+    }
+
+    async function copyToClipboard(text){
+      const value = String(text || "");
+      if(!value) return;
+
+      try{
+        await navigator.clipboard.writeText(value);
+      }catch(e){
+        const temp = document.createElement("textarea");
+        temp.value = value;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        temp.remove();
+      }
+
+      const Toast = Swal.mixin({
+        toast:true,
+        position:"top-end",
+        showConfirmButton:false,
+        timer:1100,
+        timerProgressBar:true
+      });
+      Toast.fire({icon:"success",title:"Copiado"});
     }
 
     function pad(value){
