@@ -468,18 +468,20 @@
 
     const CUSTOMER_SERVICE_TEAM = ["Lizbeth Perea","Naomi Rodriguez"];
 
-    const WEEKDAY_SLOTS = [
-      { label:"9:00–10:30", start:"09:00", end:"10:30" },
-      { label:"10:31–12:00", start:"10:31", end:"12:00" },
-      { label:"12:01–1:30", start:"12:01", end:"13:30" },
-      { label:"1:31–3:00", start:"13:31", end:"15:00" }
+    const MONDAY_TO_WEDNESDAY_SLOTS = [
+      { label:"9:00 am – 10:30 am", start:"09:00", end:"10:30" },
+      { label:"11:00 am – 12:30 pm", start:"11:00", end:"12:30" },
+      { label:"2:30 pm – 4:00 pm", start:"14:30", end:"16:00" }
+    ];
+
+    const THURSDAY_FRIDAY_SLOTS = [
+      { label:"9:00 am – 10:30 am", start:"09:00", end:"10:30" },
+      { label:"2:30 pm – 4:00 pm", start:"14:30", end:"16:00" }
     ];
 
     const SATURDAY_SLOTS = [
-      { label:"9:00–10:30", start:"09:00", end:"10:30" },
-      { label:"10:31–12:00", start:"10:31", end:"12:00" },
-      { label:"12:01–1:30", start:"12:01", end:"13:30" },
-      { label:"1:31–3:00", start:"13:31", end:"15:00" }
+      { label:"8:00 am – 9:30 am", start:"08:00", end:"09:30" },
+      { label:"10:00 am – 11:30 am", start:"10:00", end:"11:30" }
     ];
 
     let currentMode = "";
@@ -686,10 +688,21 @@
     function getSlotsForDate(date){
       const day = date.getDay();
 
-      if(day === 0) return [];
-      if(day === 6) return SATURDAY_SLOTS;
+      if(day === 0) return []; // Domingo sin agenda
 
-      return WEEKDAY_SLOTS;
+      if(day >= 1 && day <= 3){
+        return MONDAY_TO_WEDNESDAY_SLOTS; // Lunes, martes y miércoles
+      }
+
+      if(day === 4 || day === 5){
+        return THURSDAY_FRIDAY_SLOTS; // Jueves y viernes
+      }
+
+      if(day === 6){
+        return SATURDAY_SLOTS; // Sábado
+      }
+
+      return [];
     }
 
     function renderGrid(){
